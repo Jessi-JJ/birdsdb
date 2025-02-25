@@ -9,11 +9,15 @@ st.title("Canopy tree preference by insectivorous birds on shade-coffee farms")
 st.metric("Total Birds Observed", f"{df['num_birds'].sum():,.2f}")
 st.metric("Total Orders", len(df))
 
+df_treesp = df["treesp"].value_counts().to_frame()
+df_treesp.reset_index(inplace=True)
+df_treesp.columns = ["treesp", "count"]
+
 col1, col2 = st.columns((2))
 
 with col1: # Chart
   st.subheader("Tree Species")
-  fig = px.bar(df, x = "treesp", y = "count", text = [f"{x}" for x in df["treesp"]],
+  fig = px.bar(df_treesp, x = "treesp", y = "count", text = [f"{x}" for x in df["treesp"]],
                  template = "seaborn")
   st.plotly_chart(fig,use_container_width=True, height = 200)
 
