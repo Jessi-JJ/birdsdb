@@ -32,13 +32,17 @@ with col2: #Chart
   st.plotly_chart(fig,use_container_width=True, height = 200)
 
 # Create a multiselect for Country in the sidebar
-country = st.sidebar.multiselect("Select Country", df["Country"].unique())
+country = st.sidebar.multiselect("Select Country", df["country"].unique())
 
 # Filter the DataFrame based on the Country selection
 if country:
-    filtered_df = df[df["Country"].isin(country)]
+    filtered_df = df[df["country"].isin(country)]
 else:
     filtered_df = df.copy()
+
+# Display the filtered DataFrame
+st.write("Filtered DataFrame", filtered_df)
+
 
 # Display the filtered DataFrame
 st.write("Filtered DataFrame", filtered_df)
