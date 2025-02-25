@@ -17,7 +17,7 @@ col1, col2 = st.columns((2))
 
 with col1: # Chart
   st.subheader("Tree Species")
-  fig = px.bar(df_treesp, x = "treesp", y = "count", text = [f"{x}" for x in df["treesp"]],
+  fig = px.bar(df_treesp, x = "treesp", y = "count", text = [f"{x}" for x in df_treesp["treesp"]],
                  template = "seaborn")
   st.plotly_chart(fig,use_container_width=True, height = 200)
 
